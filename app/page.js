@@ -64,8 +64,8 @@ async function getData() {
 }
 
 export default async function Home() {
-  // const stations = await getData();
-
+  const stations = await getData();
+  console.log(stations);
   return (
     <div className="h-screen">
       <LocationAggregatorMap />
