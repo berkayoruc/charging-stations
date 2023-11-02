@@ -11,10 +11,12 @@ const LocationAggregatorMap = (props) => {
     <Map
       className=""
       initialViewState={{
-        bounds: bbox(props.stations) || [
-          [-180, -90],
-          [180, 90],
-        ],
+        bounds: props.stations
+          ? bbox(props.stations)
+          : [
+              [-180, -90],
+              [180, 90],
+            ],
         fitBoundsOptions: {
           padding: 100,
         },

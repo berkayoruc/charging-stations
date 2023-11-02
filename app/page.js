@@ -64,11 +64,11 @@ async function getData() {
 }
 
 export default async function Home() {
-  const stations = await getData();
+  // const stations = await getData();
 
   return (
     <div className="h-screen">
-      <LocationAggregatorMap stations={stations} />
+      <LocationAggregatorMap />
     </div>
     // <ul>
     //   {stations.features.map((station) => (
