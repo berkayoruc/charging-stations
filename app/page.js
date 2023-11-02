@@ -12,14 +12,14 @@ async function getData() {
       url: "https://veri.kocaeli.bel.tr/tr/dataset/9021334f-358b-4a1a-9f4f-76592ca07541/resource/f853e162-8895-47e8-8bcf-e1b8796f1cf1/download/akulu-sandalye-arj-istasyonu.json",
       city: "kocaeli",
     },
-    {
-      url: "https://acikveri.bizizmir.com/api/3/action/datastore_search?resource_id=028f2692-d930-481f-ab27-17a321bd1283&limit=5",
-      city: "izmir",
-    },
-    {
-      url: "https://opendata.gaziantep.bel.tr/api/3/action/datastore_search?resource_id=a9b86fc1-af55-41ca-984e-164c161c14d3&limit=500",
-      city: "gaziantep",
-    },
+    // {
+    //   url: "https://acikveri.bizizmir.com/api/3/action/datastore_search?resource_id=028f2692-d930-481f-ab27-17a321bd1283&limit=5",
+    //   city: "izmir",
+    // },
+    // {
+    //   url: "https://opendata.gaziantep.bel.tr/api/3/action/datastore_search?resource_id=a9b86fc1-af55-41ca-984e-164c161c14d3&limit=500",
+    //   city: "gaziantep",
+    // },
   ];
   let stations = { type: "FeatureCollection", features: [] };
   try {
