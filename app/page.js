@@ -29,6 +29,7 @@ async function getData() {
     const res = await axios.get(url).catch((err) => err);
     if (res.status === 200) {
       if (res && res.data) {
+        console.log("success", city, res.data);
         if (city === "istanbul" && district === "tuzla") {
           stations.features = stations.features.concat(
             res.data.result.records.map((station) => {
