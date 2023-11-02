@@ -22,43 +22,45 @@ async function getData() {
     },
   ];
   let stations = { type: "FeatureCollection", features: [] };
-  for (let i = 0; i < urls.length; i++) {
-    const { url, city, district } = urls[i];
-    const res = await axios.get(url).catch((err) => {
-      console.log("noldu");
-    });
-    if (res?.data) {
-      if (city === "istanbul" && district === "tuzla") {
-        stations.features = stations.features.concat(
-          res.data.result.records.map((station) => {
-            return {
-              type: "Feature",
-              geometry: {
-                type: "Point",
-                coordinates: [station.BOYLAM, station.ENLEM],
-              },
-              properties: {
-                name: station["ENGELLI ARACI SARJ ISTASYONLARI"],
-                address: station.ADRES,
-              },
-            };
-          })
-        );
-      } else if (city === "kocaeli") {
-        stations.features = stations.features.concat(
-          res.data.features.map((station) => {
-            return {
-              type: station.type,
-              geometry: station.geometry,
-              properties: {
-                name: station.properties.adi,
-                address: station.properties.adres,
-              },
-            };
-          })
-        );
+  try {
+    for (let i = 0; i < urls.length; i++) {
+      const { url, city, district } = urls[i];
+      const res = await axios.get(url);
+      if (res && res.data) {
+        if (city === "istanbul" && district === "tuzla") {
+          stations.features = stations.features.concat(
+            res.data.result.records.map((station) => {
+              return {
+                type: "Feature",
+                geometry: {
+                  type: "Point",
+                  coordinates: [station.BOYLAM, station.ENLEM],
+                },
+                properties: {
+                  name: station["ENGELLI ARACI SARJ ISTASYONLARI"],
+                  address: station.ADRES,
+                },
+              };
+            })
+          );
+        } else if (city === "kocaeli") {
+          stations.features = stations.features.concat(
+            res.data.features.map((station) => {
+              return {
+                type: station.type,
+                geometry: station.geometry,
+                properties: {
+                  name: station.properties.adi,
+                  address: station.properties.adres,
+                },
+              };
+            })
+          );
+        }
       }
     }
+  } catch (error) {
+    console.log("noldu", error);
   }
   return stations;
 }
