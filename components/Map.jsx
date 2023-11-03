@@ -55,7 +55,12 @@ const LocationAggregatorMap = (props) => {
 				map.on('click', 'stations', function (e) {
 					const features = e.target.queryRenderedFeatures(e.point);
 					const feature = features[0];
-					console.log(feature.properties);
+					if (feature) {
+						console.log(feature.properties);
+						e.target.flyTo({
+							center: feature.geometry.coordinates,
+						});
+					}
 				});
 			}}
 		></Map>
