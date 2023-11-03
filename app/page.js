@@ -20,7 +20,7 @@ async function getData() {
 export default async function Home() {
   const stations = await getData();
   return (
-    <div className="h-screen">
+    <div className="h-[100svh]">
       <LocationAggregatorMap stations={stations} />
     </div>
     // <ul>
