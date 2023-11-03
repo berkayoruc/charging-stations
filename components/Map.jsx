@@ -60,6 +60,8 @@ const LocationAggregatorMap = (props) => {
 						e.target.flyTo({
 							center: feature.geometry.coordinates,
 							zoom: 14,
+							pitch: 60,
+							bearing: 40,
 						});
 					}
 				});
