@@ -5,9 +5,7 @@ async function getData() {
   let stations = { type: "FeatureCollection", features: [] };
 
   const response = await axios
-    .get(
-      "https://raw.githubusercontent.com/hexa-apps/charging-stations-action/main/stations.json"
-    )
+    .get(process.env.NEXT_PUBLIC_STATION_URL)
     .catch((err) => err);
 
   if (response.status === 200) {
