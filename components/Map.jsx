@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import Map from "react-map-gl";
+import Map, { NavigationControl } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { bbox } from "@turf/turf";
 import mapboxgl from "mapbox-gl";
@@ -76,9 +76,10 @@ const LocationAggregatorMap = (props) => {
               .addTo(map);
           }
         });
-        map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
       }}
-    ></Map>
+    >
+      <NavigationControl position="bottom-right" />
+    </Map>
   );
 };
 
