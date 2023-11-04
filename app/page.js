@@ -1,5 +1,6 @@
 import LocationAggregatorMap from "@/components/Map";
 import axios from "axios";
+import Script from "next/script";
 
 async function getData() {
   let stations = { type: "FeatureCollection", features: [] };
@@ -18,19 +19,20 @@ async function getData() {
 export default async function Home() {
   const stations = await getData();
   return (
-    <div className="h-[100svh] w-[100svw]">
-      <LocationAggregatorMap stations={stations} />
-    </div>
-    // <ul>
-    //   {stations.features.map((station) => (
-    //     <li
-    //       className="border-b border-blue-300 p-2 cursor-pointer"
-    //       key={Math.random()}
-    //     >
-    //       <h3>{station.properties.name}</h3>
-    //       <p>{station.properties.address}</p>
-    //     </li>
-    //   ))}
-    // </ul>
+    <>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-K1071TL83T" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-K1071TL83T');
+        `}
+      </Script>
+      <div className="h-[100svh] w-[100svw]">
+        <LocationAggregatorMap stations={stations} />
+      </div>
+    </>
   );
 }
