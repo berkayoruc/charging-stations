@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
 import Map, { Layer, NavigationControl, Popup, Source } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -49,9 +49,7 @@ const LocationAggregatorMap = (props) => {
     e.preventDefault();
     setPopupInfo(null);
     const bounds = bbox(props.stations);
-    mapRef.current.getMap().fitBounds(bounds, {
-      padding: window.innerWidth < 765 ? 50 : 100,
-    });
+    mapRef.current.getMap().fitBounds(bounds, { padding: 50 });
   };
 
   return (
@@ -66,7 +64,7 @@ const LocationAggregatorMap = (props) => {
               [180, 90],
             ],
         fitBoundsOptions: {
-          padding: window.innerWidth < 765 ? 50 : 100,
+          padding: 50,
         },
       }}
       controller={false}
