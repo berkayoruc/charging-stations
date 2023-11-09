@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
-import Map, { Layer, NavigationControl, Popup, Source } from "react-map-gl";
+import Map, {
+  GeolocateControl,
+  Layer,
+  NavigationControl,
+  Popup,
+  Source,
+} from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { bbox } from "@turf/turf";
 
@@ -51,6 +57,10 @@ const LocationAggregatorMap = (props) => {
     const bounds = bbox(props.stations);
     mapRef.current.getMap().fitBounds(bounds, { padding: 50 });
   };
+
+  // useEffect(() => {
+  //   console.log("mapRef", mapRef);
+  // }, [mapRef]);
 
   return (
     <Map
@@ -118,6 +128,7 @@ const LocationAggregatorMap = (props) => {
           🏠
         </button>
       )}
+      <GeolocateControl position="bottom-right" />
       <NavigationControl position="bottom-right" />
     </Map>
   );
